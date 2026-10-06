@@ -1,0 +1,231 @@
+<!-- <p>comp-a works!</p> -->
+
+<div [style.margin]="'50px'">
+   <div [style.background]="'green'">
+        <p>Green</p>
+   </div>
+   <div [style.color]="'red'">
+       <p> Red</p>
+   </div>
+</div>
+
+<hr>
+
+@if(isLoggedIn){
+    <h1>Welcome User!!</h1>
+}@else{
+    <h1>Please Login first</h1>
+}
+
+<hr>
+
+@if(student.marks >= 80){
+
+    <h1>Excellent</h1>
+}@else if(student.marks >= 60){
+    <h1>Good</h1>
+}@else if(student.marks >= 40){
+    <h1>Pass</h1>
+}@else{
+    <h1>Fail</h1>
+}
+
+<hr>
+
+@if(employees.length> 0){
+    <table class="table table-bordered table-striped">
+        <thead class="table-success">
+            <tr>
+                <th>Sr No.</th>
+                <th>Employee Name</th>
+                <th>Designation</th>
+                <th>Salary</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @for(employee of employees;track $index){
+                <tr>
+                    <td>{{$index+1}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.designation}}</td>
+                    <td>{{employee.salary}}</td>
+                    @if(employee.salary >= 70000){
+                    <td>
+                        Senior Salary
+                    </td>
+                }@else{
+                    <td>
+                        Normal Salary
+                    </td>
+                }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>Sr No.</th>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(employee of employee_det; track $index) {
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.salary }}</td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="4" class="text-center">
+                    No Employees Found!!!
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr>
+
+@switch(employee.designation){
+
+    @case('Developer'){
+        <h5>Designation of employee is Developer</h5>
+       
+    }
+    @case('Manager'){
+        'Designation of employee is Manager'
+        
+    }
+    @case('Sales Executive'){
+        'Designation of employee is Sales Executive'
+         
+    }
+    @case('Accountant'){
+        'Designation of employee is Accountant'
+         
+    }
+    @default{
+        'Invalid Input!!!'
+    }
+}
+
+
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>Sr No.</th>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Responsibity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(employee of employees; track $index) {
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.salary }}</td>
+                @switch(employee.designation){
+
+                    @case('Developer'){
+                        <td>Writes Code</td>
+                    }
+                    @case('Manager'){
+                        <td>Manages Team</td>
+                    }
+                    @case('Tester'){
+                        <td>Tests Application</td>
+                    }
+                    @case('Designer'){
+                        <td>Creates UI</td>
+                    }
+                }
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="4" class="text-center">
+                    No Employees Found!!!
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<hr>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-success">
+        <tr>
+            <th>Sr No.</th>
+            <th>Employee Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Salary Status</th>
+            <th>Responsibity</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @for(employee of employees; track $index) {
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.designation }}</td>
+                <td>{{ employee.salary }}</td>
+                @if(employee.salary >= 70000){
+                    <td>High Salary</td>
+                }@else if(employee.salary >= 50000){
+                    <td>Good Salary</td>
+                
+                }@else{
+                    <td>Normal Salary</td>
+                }
+            
+                @switch(employee.designation){
+
+                    @case('Developer'){
+                        <td>Writes Code</td>
+                    }
+                    @case('Manager'){
+                        <td>Manages Team</td>
+                    }
+                    @case('Tester'){
+                        <td>Tests Application</td>
+                    }
+                    @case('Designer'){
+                        <td>Creates UI</td>
+                    }
+                }
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="4" class="text-center">
+                    No Employees Found!!!
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
