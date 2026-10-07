@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
-import { CompA } from './comp-a/comp-a';
+import { Parent } from './parent/parent';
 
 @Component({
-  imports: [CompA],
+  imports: [Parent],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

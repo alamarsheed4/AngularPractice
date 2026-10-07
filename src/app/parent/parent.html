@@ -1,0 +1,19 @@
+<!-- <p>parent works!</p> -->
+
+<app-child [name]="EmployeeName"></app-child>
+
+<button
+    class="btn btn-primary"
+    (click)="changeName()">
+    Change Name
+</button>
+<hr>
+
+
+<h1>Customer Name: {{employee.name}}</h1>
+
+<button
+    class="btn btn-primary"
+    (click)="changeCustomer()">
+    Change Customer Name
+</button>
