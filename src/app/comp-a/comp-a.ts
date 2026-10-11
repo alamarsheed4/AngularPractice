@@ -1,83 +1,116 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   selector: 'app-comp-a',
   styleUrl: './comp-a.css',
   templateUrl: './comp-a.html',
 })
 export class CompA {
 
-  constructor(private cd : ChangeDetectorRef){}
+  customerName = 'Arsheed'
 
- EmployeeName = 'Arsheed'
+  employeeName = ''
 
- currentDate = new Date();
+  keyUp(eventDetails:KeyboardEvent){
 
- changeName(){
-  this.EmployeeName = 'John'
- }
+    let inpurEle = eventDetails.target as HTMLInputElement
 
- setTime(){
-  setInterval(()=>{
-    this.currentDate = new Date();
-    this.cd.markForCheck();
-  },1000)
-  this.currentDate = new Date();
- }
+    this.employeeName = inpurEle.value
+  }
 
- customerName = signal('Rohit Kumar')
- customerCount = signal(1)
+  customerLocation='India'
 
- changeDetails(){
-  this.customerName.set('Raman Singh')
-  this.customerCount.set(5)
- }
+  CustomerName = ''
 
- updateDetails(){
-  this.customerName.update((name)=>{
-    return name = 'Rajat Saxena'
-  })
- }
+  changeCustomerDetails(customerName:any){
 
- increaseCount(){
-  this.customerCount.update((count)=>{
-    return count +=1
-  })
- }
+    this.customerLocation = customerName
+    
+  }
 
- decreaseCount(){
-  this.customerCount.update((count)=>{
-    return count -=1
-  })
- }
+  empName = '';
+  designation = '';
+  salary = 0;
 
- products = ['Samsung','Apple phone', 'Oppo', 'Vivo']
+  product = ''
+
+  getName(custName:any){
+    console.log(custName.value);
+    
+  }
+
+  changeName(){
+    this.customerName = 'Raman'
+
+    console.log(this.customerName);
+    
+  }
+
+  Message = ""
+
+  count = ''
+
+  characterCount(){
+    this.count= `Message Length is ${this.Message.length}`
+  }
+
+  studentName = '';
+  marks: number | null = null;
+
+  showDetails = false
+
+  getDetails(){
+    this.showDetails = true
+  }
+
+  selectedDesignation = '';
+
+  employee = {
+    name: '',
+    designation: '',
+    salary: 0
+  };
+
+  searchText = '';
+
+  showEmployeeDetails:any=[]
+
+  employees = [
+  { name: 'Arsheed', designation: 'Developer', salary: 60000 },
+  { name: 'Raman', designation: 'Manager', salary: 80000 },
+  { name: 'Rajat', designation: 'Tester', salary: 45000 }
+];
+
+  getEmployeeDetails(searchByName:string){
+   this.showEmployeeDetails = this.employees.filter((details:any)=>{
+
+    return details.name.toLocaleLowerCase().includes(searchByName.trim().toLowerCase())
+   })
+  }
+
+  username = '';
+  password = '';
+
+  userNameMsg = 'Please Enter Username'
+  passwordMsg = 'Please Enter Password'
+
+  loginMessage = ''
 
 
- EmployeeDetails = [
-  {
-    name:'Arsheed',
-    salary:34000,
-    location:'London'
-  },
-  {
-    name:'Sandeep',
-    salary:78000,
-    location:'America'
-  },
-  {
-    name:'Raman',
-    salary:45000,
-    location:'UK'
-  },
-  {
-    name:'Rakesh',
-    salary:52000,
-    location:'England'
-  },
- ]
-
- customerId = 10;
+  getLogin(){
+    if(this.username.trim() == ''){
+      alert(this.userNameMsg)
+    }else if(this.password == ''){
+      alert(this.passwordMsg)
+    }else if(this.username == 'Arsheed' && this.password == '123'){
+      this.loginMessage = 'Login SuccessFully!!!'
+    }else{
+      this.loginMessage = 'Invalid Username or Password'
+    }
+  }
+  
 }
+

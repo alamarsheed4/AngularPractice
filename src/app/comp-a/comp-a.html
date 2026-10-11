@@ -1,204 +1,209 @@
-<div class="container mt-5">
-    <h2 class="mb-4">
-        Change Detection!!
-    </h2>
+
+<div>
+    <h1>{{customerName}}</h1>
 </div>
 
-<div class="card shadow-sm mb-4 w-50 mx-auto">
-    <div class="card-header bg-success text-white">
-        Component Change!!
-    </div>
-    <div class="card-body">
-        <input type="text" [value]="EmployeeName">
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-warning" (click)="changeName()">
-            Change Name
-        </button>
-    </div>
-</div>
+<input type="text" [ngModel]="customerName">
+<br><br>
 
-<div class="card shadow-sm w-50 mx-auto">
+<label for="">Employee Name</label>: {{employeeName}}
+<input type="text" placeholder="Enter Name Here" #employeeName
+(keyup)="keyUp($event)">
+<br><br>
+<input class="mb-4" type="text" [ngModel]="customerName"
+(ngModelChange)="changeCustomerDetails($event)">
 
-    <div class="card-header bg-success text-white">
-        Asynchronous Change
-    </div>
+<h1>Using Both binding</h1>
+<input class="mb-4" type="text" [(ngModel)]= "customerLocation">
 
-    <div class="card-body">
-        {{currentDate}}
-    </div>
-
-    <div class="card-footer">
-        <button class="btn btn-info" (click)="setTime()">
-            Change Time
-        </button>
-    </div>
-</div>
-
-<!-- Angular Signals -->
+{{customerLocation}}
 
 <hr>
 
-<div class="card shadow-sm mb-4 w-50 mx-auto">
-    <div class="card-header bg-danger text-white">
-        Angular Signals
-    </div>
-    <div class="card-body">
-       <h5>
-        Customer Name:  {{customerName()}}
-       </h5>
-       <h5>
-        Customer Count:  {{customerCount()}}
-       </h5>
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-info"
-        (click)="changeDetails()">
-            Button
-        </button>
-    </div>
+<label for="">Employee Name</label>&nbsp;
+<input type="text"[(ngModel)]='empName'>&nbsp; 
+{{empName}} |
 
-</div>
+<label for="">Employee Name</label>&nbsp;
+<input type="text"[(ngModel)]='designation'>&nbsp; 
+{{designation}} |
+
+<label for="">Employee Designation</label>&nbsp;
+<input type="text"[(ngModel)]='salary'>&nbsp; 
+{{salary}}
 
 <hr>
 
-<div class="card shadow-sm mb-4 w-50 mx-auto">
-    <div class="card-header bg-danger text-white">
-        update Angular Signals using update method
-    </div>
-    <div class="card-body">
-       <h5>
-        Customer Name:  {{customerName()}}
-       </h5>
-       <h5>
-        Customer Count:  {{customerCount()}}
-       </h5>
-    </div>
-    <div class="card-footer d-flex gap-2">
-        <button class="btn btn-info"
-        (click)="updateDetails()">
-            Button
-        </button>
-        <button class="btn btn-info"
-        (click)="increaseCount()">
-            Increase
-        </button>
-        <button class="btn btn-info"
-        (click)="decreaseCount()">
-            Decrease
-        </button>
-    </div>
+<input type="text" [value]="product" #empolyName>&nbsp;
 
-</div>
+ {{product}}
+
+<button (click)="getName(empolyName)" class="btn btn-success">Get Value</button>
 
 <hr>
 
-<ul type="square">
-    <li *ngFor="let product of products">{{product}}</li>
-</ul>
+<input type="text" [(ngModel)]="customerName"> &nbsp;&nbsp;
+
+<button (click)="changeName()" class="btn btn-warning">
+    Change Name
+</button>
+
+<h3>{{ customerName }}</h3>
 
 <hr>
 
-<table class="table table-bordered table-striped">
-    <thead class="table-success">
-        <tr>
-            <th>Sr No.</th>
-            <th>Employee Name</th>
-            <th>Salary</th>
-            <th>Location</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let emp of EmployeeDetails; let i =index">
-            <td>{{i+1}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.salary}}</td>
-            <td>{{emp.location}}</td>
-        </tr>
-    </tbody>
+<input type="text" [(ngModel)]="Message">&nbsp;&nbsp;
+
+<button (click)="characterCount()" class="btn btn-info">Character Count</button>
+
+
+{{count}}
+
+<hr>
+<br><br>
+<input type="text" [(ngModel)]="studentName" placeholder="Student Name">
+<br><br>
+<input type="text" [(ngModel)]="marks" placeholder="Marks" #inputMarks>
+<br><br>
+
+<button (click)="getDetails()" class="btn btn-info">Get Student Details</button>
+<br><br>
+
+@if(showDetails){
+<h5>Student Name: {{studentName}}</h5>
+<h5>Student Marks: {{marks}}</h5>
+
+@if( marks != null && marks>=80){
+    <h5>Excellent</h5>
+}
+@else if( marks != null && marks>= 60)
+{
+     <h5>Good</h5>
+}
+@else if( marks != null && marks>= 40)
+{
+     <h5>Good</h5>
+}
+@else{
+    <h5>Fail</h5>
+}
+
+}
+
+<hr>
+
+<select [(ngModel)]="selectedDesignation">
+    <option value="select">Select Designation</option>
+    <option value="Developer">Developer</option>
+    <option value="Manager">Manager</option>
+    <option value="Tester">Tester</option>
+</select>
+
+<h5>Selected Designation: {{selectedDesignation}}</h5>
+
+<hr>
+
+<input type="text" [(ngModel)]="employee.name" placeholder="Name"
+class="form-control">
+<br><br>
+
+<input type="text" [(ngModel)]="employee.designation" placeholder="Designation" 
+class="form-control">
+<br><br>
+
+<input type="text" [(ngModel)]="employee.salary" placeholder="Salary"
+class="form-control">
+
+<h5>Employee Name: {{ employee.name }}</h5>
+<h5>Employee Designation: {{ employee.designation }}</h5>
+<h5>Employee Salary: {{ employee.salary }}</h5>
+
+
+<hr>
+
+<input
+  type="text"
+  [(ngModel)]="searchText"
+  placeholder="Search employee"
+  class="form-control mb-2">
+
+<button
+  (click)="getEmployeeDetails(searchText)"
+  class="btn btn-info">
+  Search Employee
+</button>
+
+<table class="table table-bordered mt-3">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Designation</th>
+      <th>Salary</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (employee of showEmployeeDetails; track $index) {
+      <tr>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.designation}}</td>
+        <td>{{ employee.salary }}</td>
+      </tr>
+    }
+    @empty {
+      <tr>
+        <td colspan="3" class="text-center">No employees found</td>
+      </tr>
+    }
+  </tbody>
 </table>
 
+<br><br>
+
 <hr>
 
-<div [ngSwitch]="customerId">
-    <div *ngSwitchCase="10">
-        <table class="table table-bordered table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>Sr No.</th>
-                    <th>Customer Name</th>
-                    <th>Customer Age</th>
-                    <th>Customer Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Arsheed Alam</td>
-                    <td>32</td>
-                    <td>United Kingdom</td>
-                </tr>
-            </tbody>
-        </table>
+
+<div class="container mt-4 w-50 mx-auto">
+  <div class="card shadow-sm mb-4">
+
+    <div class="card-header bg-success text-white text-center">
+      <h5>Please Enter Your Credentials</h5>
     </div>
-    <div *ngSwitchCase="20">
-       <table class="table table-bordered table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>Sr No.</th>
-                    <th>Customer Name</th>
-                    <th>Customer Age</th>
-                    <th>Customer Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>Sandeep Chaudhary</td>
-                    <td>43</td>
-                    <td>London</td>
-                </tr>
-            </tbody>
-        </table>
+
+    <div class="card-body">
+      <div>
+        <label class="form-label">Enter Username</label>
+        <input
+          type="text"
+          placeholder="Enter Here"
+          class="form-control"
+          [(ngModel)]="username">
+      </div>
+
+      <div class="mt-4">
+        <label class="form-label">Enter Password</label>
+        <input
+          type="password"
+          placeholder="Enter Here"
+          class="form-control"
+          [(ngModel)]="password">
+      </div>
+
+      <div class="text-center mt-4">
+        <button (click)="getLogin()" class="btn btn-success">
+          Login
+        </button>
+      </div>
+
+      @if (loginMessage.length > 0) {
+        <p class="mt-3 text-center">{{ loginMessage }}</p>
+      }
     </div>
-    <div *ngSwitchCase="30">
-       <table class="table table-bordered table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>Sr No.</th>
-                    <th>Customer Name</th>
-                    <th>Customer Age</th>
-                    <th>Customer Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>4</td>
-                    <td>Sanjay</td>
-                    <td>45</td>
-                    <td>Goa</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div *ngSwitchCase="10">
-       <table class="table table-bordered table-striped">
-            <thead class="table-primary">
-                <tr>
-                    <th>Sr No.</th>
-                    <th>Customer Name</th>
-                    <th>Customer Age</th>
-                    <th>Customer Location</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5</td>
-                    <td>Rakesh</td>
-                    <td>23</td>
-                    <td>Rajasthan</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+
+  </div>
 </div>
+
+
+
+
+   
