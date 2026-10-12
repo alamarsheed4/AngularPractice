@@ -1,0 +1,74 @@
+<!-- <p>view-child works!</p> -->
+
+
+<div class="col-md-4 offset-4">
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text white">
+            View-Child Examples
+        </div>
+        <div class="card-body">
+            <input type="text" placeholder="Enter Employee Name" #employee>
+
+        </div>
+
+        <button (click)="getEmployeeName()" class="
+        btn btn-danger">Get Employee Name</button>
+
+        <p>{{EmployeeName}}</p>
+    </div>
+</div>
+
+<hr>
+<br><br>
+
+<div class="col-md-4 offset-4">
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-success text white">
+            View-Children Examples - Employee Details
+        </div>
+        <div class="card-body">
+            <label class="form-label" for="">Employee Name</label>
+            <input class="form-control" type="text" placeholder="Enter Employee Name" #empDetails>
+            <label class="form-label mt-4" for="">Employee Designation</label>
+            <input class="form-control" type="text" placeholder="Enter Employee Designation" #empDetails>
+            <label class="form-label mt-4" for="">Employee Salary</label>
+            <input class="form-control" type="text" placeholder="Enter Employee Salary" #empDetails>
+            <label class="form-label mt-4" for="">Emplyee City</label>
+            <input class="form-control" type="text" placeholder="Enter Employee City" #empDetails>
+
+        </div>
+
+        <button (click)="getEmployeeDetails()" class="
+        btn btn-danger">Get Employee Details</button>
+    </div>
+</div>
+
+@if(customerDetails.length > 0){
+<table class="table table-bordered table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>Sr No.</th>
+            <th>Employee Name</th>
+            <th>Employee Designation</th>
+            <th>Salary</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(employee of customerDetails; track $index)
+        {
+            <tr>
+                <td>{{$index+1}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.designation}}</td>
+                <td>{{employee.salary}}</td>
+                <td>{{employee.city}}</td>
+            </tr>
+        }
+        
+    </tbody>
+</table>
+
+}
